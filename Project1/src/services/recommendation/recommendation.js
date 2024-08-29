@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Recommendation = require('../../db/models/Recommendation');
+const { ValidationError } = require('../../error-handler/error-handler');
 
 class RecommendationService {
   constructor() {
@@ -10,7 +11,7 @@ class RecommendationService {
   getRecommendation(requestFor, type, userInput) {
     const filteredRecommendations = this.db.recommendations.find(record => record[type] === userInput);
     if (!filteredRecommendations) {
-      throw new Error('No recommendations found for the given input.');
+      throw new ValidationError('No recommendations found for the given input.');
     }
     const recommendation = new Recommendation(filteredRecommendations.place, filteredRecommendations.genre, filteredRecommendations.song);
 

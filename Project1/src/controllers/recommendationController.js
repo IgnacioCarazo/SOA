@@ -1,3 +1,4 @@
+const { ExternalAPIError, ValidationError } = require('../error-handler/error-handler');
 const openAIService = require('../services/openAi');
 const recommendationService = require('../services/recommendation');
 
@@ -9,16 +10,19 @@ class RecommendationController {
       let recommendations;
 
       if (useAI) {
-        recommendation = openAIService.getRecommendationFromAI(requestFor, type, userInput)
+        recommendations = await openAIService.getRecommendationFromAI(requestFor, type, userInput);
       } else {
-        recommendation = recommendationService.getRecommendation(requestFor, type, userInput);
+        recommendations = recommendationService.getRecommendation(requestFor, type, userInput);
       }
 
       res.json({ recommendations });
     } catch (error) {
       console.error('Error occurred:', error);
-      res.status(500).json({ error: `An error occurred while processing your request: ${error.message}` });
-
+      if (error instanceof ExternalAPIError || error instanceof ValidationError) {
+        res.status(error.statusCode).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: 'An internal server error occurred.' });
+      }
     }
   }
 }
