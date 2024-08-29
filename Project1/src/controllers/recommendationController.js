@@ -1,28 +1,26 @@
-const RecommendationService = require('../services/RecommendationService');
-const OpenAIService = require('../services/OpenAIService');
+const openAIService = require('../services/openAi');
+const recommendationService = require('../services/recommendation');
 
-export class RecommendationController {
-  constructor() {
-    this.recommendationService = new RecommendationService();
-    this.openAIService = new OpenAIService();
-  }
-
+class RecommendationController {
   async getRecommendations(req, res) {
-    const { type, useAI } = req.body;
-
+    const { requestFor, useAI, recommendation } = req.body;
+    const { type, userInput } = recommendation;
     try {
       let recommendations;
 
       if (useAI) {
-        recommendations = await this.openAIService.getRecommendationFromAI(type);
+        recommendation = openAIService.getRecommendationFromAI(requestFor, type, userInput)
       } else {
-        recommendations = this.recommendationService.getRecommendationFromDB(type);
+        recommendation = recommendationService.getRecommendation(requestFor, type, userInput);
       }
 
       res.json({ recommendations });
     } catch (error) {
-      console.error('Error in getRecommendations:', error);
-      res.status(500).json({ error: 'An error occurred while processing your request.' });
+      console.error('Error occurred:', error);
+      res.status(500).json({ error: `An error occurred while processing your request: ${error.message}` });
+
     }
   }
 }
+
+module.exports = RecommendationController;

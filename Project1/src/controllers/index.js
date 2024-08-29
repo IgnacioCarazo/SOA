@@ -1,4 +1,7 @@
-export { RecommendationController } from "./recommendationController";
+const RecommendationController = require('./recommendationController');
 
+const recommendationController = new RecommendationController();
 
-export const recommendationController = new RecommendationController();
+module.exports = {
+  recommendationController
+};
