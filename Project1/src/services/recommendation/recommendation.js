@@ -17,16 +17,16 @@ class RecommendationService {
 
     const response = {};
 
-    if (requestFor.includes('song') && filteredRecommendations.song) {
-      response.song = filteredRecommendations.song;
+    if (requestFor.includes('song') && recommendation.song) {
+      response.song = recommendation.song;
     }
 
-    if (requestFor.includes('genre') && filteredRecommendations.genre) {
-      response.genre = filteredRecommendations.genre;
+    if (requestFor.includes('genre') && recommendation.genre) {
+      response.genre = recommendation.genre;
     }
 
-    if (requestFor.includes('place') && filteredRecommendations.place) {
-      response.place = filteredRecommendations.place;
+    if (requestFor.includes('place') && recommendation.place) {
+      response.place = recommendation.place;
     }
 
     return response;

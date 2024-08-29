@@ -7,15 +7,15 @@ class RecommendationController {
     const { requestFor, useAI, recommendation } = req.body;
     const { type, userInput } = recommendation;
     try {
-      let recommendations;
+      let recommendation;
 
       if (useAI) {
-        recommendations = await openAIService.getRecommendationFromAI(requestFor, type, userInput);
+        recommendation = await openAIService.getRecommendationFromAI(requestFor, type, userInput);
       } else {
-        recommendations = recommendationService.getRecommendation(requestFor, type, userInput);
+        recommendation = recommendationService.getRecommendation(requestFor, type, userInput);
       }
 
-      res.json({ recommendations });
+      res.json({ recommendation });
     } catch (error) {
       console.error('Error occurred:', error);
       if (error instanceof ExternalAPIError || error instanceof ValidationError) {
