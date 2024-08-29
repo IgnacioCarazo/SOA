@@ -1,3 +1,4 @@
-import { OpenAIService } from "./openai";
+const OpenAIService = require('./openai');
+const openAIService = new OpenAIService();
 
-export const openAIService = new OpenAIService();
+module.exports = openAIService;
