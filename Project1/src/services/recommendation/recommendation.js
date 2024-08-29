@@ -29,7 +29,6 @@ class RecommendationService {
       response.place = filteredRecommendations.place;
     }
 
-    console.log(`From our personal database we can recommend for a place like ${recommendation.place} the song ${recommendation.song} from the ${recommendation.genre} genre`);
     return response;
   }
 }
