@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const recommendationRoutes = require('./routes/recommendationRoutes');
+require('dotenv').config();
+const recommendationRoutes = require('./routes/routes');
 
 dotenv.config();
 
@@ -8,6 +9,7 @@ const app = express();
 
 app.use(express.json());
 
+// Use the /api prefix for routes
 app.use('/api/recommendations', recommendationRoutes);
 
 module.exports = app;

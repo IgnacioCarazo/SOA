@@ -1,3 +1,5 @@
-export { RecommendationService } from "./recommendation"
+// services/recommendation/index.js
+const RecommendationService = require('./recommendation');
+const recommendationService = new RecommendationService();
 
-export const recommendationService = new RecommendationService()
+module.exports = recommendationService;
