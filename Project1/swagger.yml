@@ -10,7 +10,7 @@ paths:
   /api/recommendations:
     post:
       summary: Get recommendations
-      description: Retrieve recommendations for a place, genre, or song based on user input.
+      description: Retrieve recommendations for a place, genre, or song based on user input. This are limited to famous genres and cities.
       requestBody:
         required: true
         content:
