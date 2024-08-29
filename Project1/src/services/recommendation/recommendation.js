@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const Recommendation = require('../../db/models/Recommendation');
+const Recommendation = require('../../db/models/recommendation');
 const { ValidationError } = require('../../error-handler/error-handler');
 
 class RecommendationService {
