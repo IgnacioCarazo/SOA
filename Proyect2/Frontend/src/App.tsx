@@ -17,7 +17,9 @@ function App() {
   // Fetch tasks from the API on component mount
   useEffect(() => {
     const fetchTasks = async () => {
-      const response = await fetch("http://localhost:5001/tasks");
+      const response = await fetch(
+        "http://ec2-44-212-66-25.compute-1.amazonaws.com:5001/tasks"
+      );
       const data = await response.json();
       console.log(data);
       setTasks(data);
@@ -43,13 +45,16 @@ function App() {
         description: taskDescription,
         status: "to-do",
       };
-      const response = await fetch("http://localhost:5001/tasks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newTask),
-      });
+      const response = await fetch(
+        "http://ec2-44-212-66-25.compute-1.amazonaws.com:5001/tasks",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTask),
+        }
+      );
       const data = await response.json();
       setTasks((prevTasks) => [...prevTasks, data]);
       setTaskTitle("");
@@ -61,13 +66,16 @@ function App() {
     taskId: number,
     newStatus: "in-progress" | "done" | "to-do"
   ) => {
-    await fetch(`http://localhost:5001/tasks/${taskId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: newStatus }),
-    });
+    await fetch(
+      `http://ec2-44-212-66-25.compute-1.amazonaws.com:5001/tasks/${taskId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: newStatus }),
+      }
+    );
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === taskId ? { ...task, status: newStatus } : task
@@ -80,13 +88,16 @@ function App() {
     newTitle: string,
     newDescription: string
   ) => {
-    await fetch(`http://localhost:5001/tasks/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ title: newTitle, description: newDescription }),
-    });
+    await fetch(
+      `http://ec2-44-212-66-25.compute-1.amazonaws.com:5001/tasks/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title: newTitle, description: newDescription }),
+      }
+    );
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === id
@@ -97,9 +108,12 @@ function App() {
   };
 
   const deleteTask = async (id: number) => {
-    await fetch(`http://localhost:5001/tasks/${id}`, {
-      method: "DELETE",
-    });
+    await fetch(
+      `http://ec2-44-212-66-25.compute-1.amazonaws.com:5001/tasks/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 

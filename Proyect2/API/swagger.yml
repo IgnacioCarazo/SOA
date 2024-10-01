@@ -27,9 +27,6 @@ paths:
                   type: string
                 status:
                   type: string
-                creation_date:
-                  type: string
-                  format: date-time
     post:
       summary: "Create a new task"
       parameters:
@@ -59,9 +56,6 @@ paths:
                 type: string
               status:
                 type: string
-              creation_date:
-                type: string
-                format: date-time
   /tasks/{id}:
     get:
       summary: "Retrieve a specific task"
@@ -84,9 +78,6 @@ paths:
                 type: string
               status:
                 type: string
-              creation_date:
-                type: string
-                format: date-time
         404:
           description: "Task not found"
     put:
@@ -122,9 +113,6 @@ paths:
                 type: string
               status:
                 type: string
-              creation_date:
-                type: string
-                format: date-time
         404:
           description: "Task not found"
     delete:
