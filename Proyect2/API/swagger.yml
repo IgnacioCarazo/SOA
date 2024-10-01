@@ -1,0 +1,141 @@
+swagger: "2.0"
+info:
+  description: "API for managing tasks at TECMaster"
+  version: "1.0.0"
+  title: "Task Management API"
+host: "localhost:5001"
+basePath: "/"
+schemes:
+  - "http"
+paths:
+  /tasks:
+    get:
+      summary: "Retrieve all tasks"
+      responses:
+        200:
+          description: "List of tasks"
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                title:
+                  type: string
+                description:
+                  type: string
+                status:
+                  type: string
+                creation_date:
+                  type: string
+                  format: date-time
+    post:
+      summary: "Create a new task"
+      parameters:
+        - in: body
+          name: task
+          required: true
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+              status:
+                type: string
+      responses:
+        201:
+          description: "Task created"
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+              description:
+                type: string
+              status:
+                type: string
+              creation_date:
+                type: string
+                format: date-time
+  /tasks/{id}:
+    get:
+      summary: "Retrieve a specific task"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        200:
+          description: "Task details"
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+              description:
+                type: string
+              status:
+                type: string
+              creation_date:
+                type: string
+                format: date-time
+        404:
+          description: "Task not found"
+    put:
+      summary: "Update an existing task"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+        - in: body
+          name: task
+          required: true
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+              status:
+                type: string
+      responses:
+        200:
+          description: "Task updated"
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+              description:
+                type: string
+              status:
+                type: string
+              creation_date:
+                type: string
+                format: date-time
+        404:
+          description: "Task not found"
+    delete:
+      summary: "Delete a specific task"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+      responses:
+        204:
+          description: "Task deleted"
+        404:
+          description: "Task not found"

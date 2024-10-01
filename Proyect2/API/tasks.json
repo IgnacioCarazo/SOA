@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Task 1",
+        "description": "string",
+        "status": "done"
+    },
+    {
+        "id": 2,
+        "title": "task de prueba",
+        "description": "2",
+        "status": "to-do"
+    },
+    {
+        "id": 3,
+        "title": "Task 1",
+        "description": "string",
+        "status": "to-do"
+    },
+    {
+        "id": 4,
+        "title": "Task docker",
+        "description": "this task was created when both api and frontend were running with docker",
+        "status": "in-progress"
+    }
+]

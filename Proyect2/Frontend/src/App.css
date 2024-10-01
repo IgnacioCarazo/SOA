@@ -1,0 +1,133 @@
+/* App.css */
+
+/* Set a full height background */
+.background {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background-image: url("https://www.tec.ac.cr/hoyeneltec/sites/default/files/styles/node/public/media/img/main/aerea_tec.jpg"); /* Example image URL */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+}
+
+.task-manager {
+  background-color: rgba(255, 255, 255, 0.4); /* Light blue background */
+  height: 30%; /* Full viewport height */
+  width: 30%; /* Full viewport width */
+  border-radius: 8px;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  gap: 20px;
+  padding: 10px; /* Padding around content */
+}
+
+.task-input {
+  padding: 10px; /* Padding inside input */
+  border: 1px solid #90caf9; /* Light blue border */
+  border-radius: 4px; /* Rounded corners */
+  margin-bottom: 10px; /* Space below input */
+}
+
+.task-description-input {
+  padding: 10px; /* Padding inside input */
+  border: 1px solid #90caf9; /* Light blue border */
+  border-radius: 4px; /* Rounded corners */
+  height: 40%;
+  margin-bottom: 10px; /* Space below input */
+}
+
+.add-task-button {
+  padding: 10px 15px; /* Button padding */
+  border: none; /* No border */
+  background-color: black; /* Blue background */
+  color: grey; /* White text */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+}
+
+.add-task-button:hover {
+  color: white; /* Darker blue on hover */
+  transform: scale(1.01); /* Slightly enlarge on hover */
+}
+
+/* Board styles */
+.board {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ); /* White background with 80% opacity */
+  height: 70%; /* Full viewport height */
+  width: 50%; /* Full viewport width */
+  border-radius: 8px;
+}
+
+/* Title styles */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title h1 {
+  font-size: 2rem;
+  color: black; /* Dark blue text color */
+}
+
+/* Columns styles */
+.columns {
+  display: flex;
+  justify-content: space-between; /* Evenly space out columns */
+  height: 80%;
+}
+
+/* Hide scrollbar for WebKit browsers */
+.to-do::-webkit-scrollbar,
+.in-progress::-webkit-scrollbar,
+.done::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+/* Individual column styles */
+.to-do,
+.in-progress,
+.done {
+  background-color: black; /* Light blue for columns */
+  border-radius: 4px;
+  flex: 1; /* Allow columns to grow */
+  margin: 0 10px; /* Space between columns */
+  padding: 10px; /* Padding inside columns */
+  min-height: 200px; /* Minimum height for visual consistency */
+  overflow-y: auto; /* Scroll if content exceeds height */
+}
+
+/* Specific styles for each column */
+.to-do {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.2
+  ); /* Blackish background with 50% opacity */
+}
+
+.in-progress {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.4
+  ); /* Blackish background with 60% opacity */
+}
+
+.done {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Blackish background with 80% opacity */
+}

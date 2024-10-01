@@ -1,0 +1,63 @@
+/* Styles for individual tasks */
+.task {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  justify-content: space-around;
+  background-color: #000000; /* Black background */
+  border: 1px solid #444; /* Dark gray border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 15px; /* Padding inside the task */
+  margin: 10px 0; /* Space between tasks */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+  transition: transform 0.2s; /* Smooth scaling effect on hover */
+}
+
+.task:hover {
+  transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+.task-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.arrow-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Title styles */
+.task strong {
+  display: block; /* Make title a block element */
+  font-size: 1.2rem; /* Larger font size for the title */
+  color: #f0f0f0; /* Light gray text color for title */
+  margin-bottom: 5px; /* Space below the title */
+}
+
+/* Description styles */
+.task p {
+  font-size: 0.9rem; /* Smaller font size for the description */
+  color: #bbb; /* Medium gray color for the description text */
+  margin-bottom: 10px; /* Space below the description */
+}
+
+/* Button styles */
+.task button {
+  background-color: #555; /* Dark gray background */
+  color: #ffffff; /* White text */
+  padding: 5px 10px; /* Padding for the button */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 0.9rem; /* Font size for button text */
+  transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.task button:hover {
+  background-color: #666; /* Slightly lighter gray on hover */
+}
+
+.task button:disabled {
+  background-color: #ccc; /* Gray background for disabled button */
+  cursor: not-allowed; /* Not allowed cursor for disabled button */
+}
