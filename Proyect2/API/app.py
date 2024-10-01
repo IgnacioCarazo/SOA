@@ -48,10 +48,14 @@ if error_message:
     print(f"Error loading tasks: {error_message}")
 task_id_counter = max((task.id for task in tasks), default=0) + 1
 
+# GET TASKS
+
 
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
     return jsonify([task.to_dict() for task in tasks]), 200
+
+# CREATE TASK
 
 
 @app.route('/tasks', methods=['POST'])
@@ -80,12 +84,15 @@ def create_task():
     return jsonify(new_task.to_dict()), 201
 
 
+# GET TASK
 @app.route('/tasks/<int:id>', methods=['GET'])
 def get_task(id):
     task = next((t for t in tasks if t.id == id), None)
     if task is None:
         return jsonify({"error": "Task not found"}), 404
     return jsonify(task.to_dict()), 200
+
+# UPDATE TASK
 
 
 @app.route('/tasks/<int:id>', methods=['PUT'])
@@ -114,6 +121,8 @@ def update_task(id):
         return jsonify({"error": f"Error saving task: {error_message}"}), 500
 
     return jsonify(task.to_dict()), 200
+
+# DELETE TASK
 
 
 @app.route('/tasks/<int:id>', methods=['DELETE'])
